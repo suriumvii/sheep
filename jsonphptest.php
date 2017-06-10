@@ -1,0 +1,4 @@
+<?PHP
+
+$name = "Yahoo";
+?>
