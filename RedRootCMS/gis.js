@@ -54,8 +54,9 @@ function mapfunc(data) {
 										case 'point':
 											layer.bindPopup('<table class="table"><thead><tr><th colspan="3" class="bg-success" style="text-align:center; width:400px;">'+ 
 											feature.properties.name +'</th></tr></thead><tbody><tr><th scope="row">Owner</th><td>'+ 
-											feature.properties.owner +'</td><td rowspan="5" style="text-align:center"><div id="graph-container"><canvas id="crops-graph" width="150" height="100%"></canvas></div></td></tr><tr><th scope="row">Lot Area</th><td>'+ 
-											feature.properties.lotarea +'</td></tr><th scope="row">Crop</th><td>' + 
+											feature.properties.owner +'</td><td rowspan="6" style="text-align:center"><div id="graph-container"><canvas id="crops-graph" width="150" height="100%"></canvas></div></td></tr><tr><th scope="row">Lot Area</th><td>'+ 
+											feature.properties.lotarea +'</td></tr><th scope="row">Volume</th><td>' + 
+											feature.properties.estimatedVolume +'</td></tr><th scope="row">Crop</th><td>' + 
 											feature.properties.crop + '</td></tr><th scope="row">Date Planted</th><td>' + 
 											feature.properties.dateplanted + '</td></tr><th scope="row">Estimated Harvest Date</th><td>' + 
 											feature.properties.dateharvest + '</td></tr></tbody></table>'
@@ -227,9 +228,9 @@ function mapfunc(data) {
 		return this._div;
 	};
 	info.update = function (props) {
-		this._div.innerHTML = '<h4>Crop Information</h4>' +  (props ?
+		this._div.innerHTML = '<h4> </h4>' +  (props ?
 			'<b>' + props.name + '</b><br />' + props.density + ' people / mi<sup>2</sup>'
-			: 'Click an area to show more info');
+			: ' ');
 	};
 	info.addTo(mymap);		
 	//**************** not working yet ***************

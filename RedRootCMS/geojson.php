@@ -13,7 +13,7 @@
 		die("Connection failed" . $conn->$connect_error);
 	}
 	
-	$command = "select username, farmername, landarea, usercrop, plantingdate, harvestdate, latitude, longitude, isSelected from landareadetails";
+	$command = "select username, farmername, landarea, usercrop, estimatedVolume, plantingdate, harvestdate, latitude, longitude, isSelected from landareadetails";
 	$result = $conn->query($command);
 	$markers = array();
 	//must be in other function
@@ -26,7 +26,7 @@
 		while($row = $result->fetch_assoc()){
 			$markers[] = array(
 				array('username' => $row['username'], 'owner' => $row['farmername'], 
-				'lotarea' => $row['landarea'], 'crop' => $row['usercrop'],
+				'lotarea' => $row['landarea'], 'crop' => $row['usercrop'], 'estimatedVolume' => $row['estimatedVolume'],
 				'dateplanted' => $row['plantingdate'], 'estimatedharvestdate' => $row['harvestdate'],
 				'lat' => $row['latitude'], 'long' => $row['longitude'], 'isSelected' => $row['isSelected'])
 			);
@@ -42,6 +42,7 @@
 		$hold = 0;
 		$property = array( "name" => $markerInfo[$hold]['username'], "owner" => $markerInfo[$hold]['owner'],
 							"lotarea" => $markerInfo[$hold]['lotarea'], "crop" => $markerInfo[$hold]['crop'],
+							"estimatedVolume" => $markerInfo[$hold]['estimatedVolume'],
 							"dateplanted" => $markerInfo[$hold]['dateplanted'], "dateharvest" => $markerInfo[$hold]['estimatedharvestdate'],
 							"isSelected" => $markerInfo[$hold]['isSelected']);
 		$geometry = newMarker($markerInfo[$hold]['lat'], $markerInfo[$hold]['long']);
